@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+class Student {
+	public int mark;
+	public String name;
+}
+
+public class KuHazwan2 {
+	
+	static Scanner input = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		System.out.print("Welcome to the Student Assessment System\n");
+		System.out.print("Please specify the number of students : ");
+		int ppl = Integer.parseInt(input.nextLine());
+		Student[] st = new Student[ppl];
+		
+		for (int i = 0; i < st.length; i++) {
+			System.out.print("Student " + (i + 1) + " name and mark: ");
+			String studentInput = input.nextLine();
+			String[] inputSpace = studentInput.split(" ");
+			
+			st[i] = new Student();
+			st[i].name = inputSpace[0];
+			st[i].mark = Integer.parseInt(inputSpace[1]);
+			
+		}
+		
+		System.out.println();
+		System.out.print("Results\n");
+		System.out.println();
+		System.out.print("Student		Name		Mark	Grade");
+		IfElse(st, ppl);
+		
+		input.close();
+	}
+	
+	static void IfElse(Student[] st, int ppl) {
+		char mark;
+		for (int i=0; i<st.length; i++) {
+			
+			if(st[i].mark >= 80 && st[i].mark <=100) {
+				 mark = 'A';
+				 displayHud(st, ppl, mark);
+			}
+			
+			if(st[i].mark >= 70 && st[i].mark <=79) {
+				 mark = 'B';
+				 displayHud(st, ppl, mark);
+			}
+			if(st[i].mark >= 60 && st[i].mark <=69) {
+				 mark = 'B';
+				 displayHud(st, ppl, mark);
+			}
+			if(st[i].mark >= 50 && st[i].mark <=59) {
+				 mark = 'B';
+				 displayHud(st, ppl, mark);
+			}
+			if(st[i].mark >= 40 && st[i].mark <=49) {
+				 mark = 'B';
+				 displayHud(st, ppl, mark);
+			}
+			if(st[i].mark >= 0 && st[i].mark <=39) {
+				 mark = 'B';
+				 displayHud(st, ppl, mark);
+			}
+			if(st[i].mark >= 100) {
+				 mark = 'X';
+				 st[ppl].mark = 0;
+				 displayHud(st, ppl, mark);
+			}
+		}
+	}
+	
+	static void displayHud(Student[] st, int ppl, int mark) {
+		for(int i=0; i<st.length; i++) {
+			System.out.println((i+1)		+ st[i].name		+ st[i].mark		+ mark);
+		}
+	}
+	
+}
